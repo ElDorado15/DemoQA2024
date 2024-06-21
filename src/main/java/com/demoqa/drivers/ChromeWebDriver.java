@@ -12,10 +12,12 @@ public class ChromeWebDriver {
     public static WebDriver loadChromeDriver (){
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("//Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
+      //  options.setBinary("//Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size-1920,1080");
+        
         if (Boolean.parseBoolean(getValue("headless"))){
             options.addArguments("--headless");
         }
