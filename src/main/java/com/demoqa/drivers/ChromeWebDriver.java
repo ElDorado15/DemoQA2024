@@ -10,7 +10,7 @@ import static com.demoqa.utils.ConfigReader.getValue;
 
 public class ChromeWebDriver {
     public static WebDriver loadChromeDriver (){
-        System.setProperty("webdriver.chrome.driver", "/Users/evaluck/IdeaProjects/DemoQAWinter24/src/main/resources/drivers/chromedriver");
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.setBinary("//Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
         options.addArguments("--no-sandbox");
@@ -20,10 +20,10 @@ public class ChromeWebDriver {
             options.addArguments("--headless");
         }
 
-
+        
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         return driver;
 
     }
